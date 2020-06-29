@@ -1,0 +1,60 @@
+.reaction-emojies-container {
+  height: calc(400px - 175px);
+  padding: $sm $xs;
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  overflow-y: auto !important;
+  text-align: center;
+  margin: auto;
+  border-bottom: $light 1px solid;
+  border-top: $light 1px solid;
+  &.not-found {
+    justify-content: center;
+  }
+  .centered {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    .notice-emoji {
+      font-size: $xl;
+      margin-bottom: $md;
+    }
+  }
+  .emoji {
+    padding: $sm;
+    border-radius: $xs;
+    transition: $transition;
+    width: 24.5px;
+    height: 20px;
+    cursor: pointer;
+    &:hover {
+      background-color: $light;
+    }
+  }
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: $xs;
+  }
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: inherit; /* color of the tracking area */
+    margin-top: $sm;
+    margin-bottom: $sm;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $primary !important;
+    border: 2px white solid;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555 !important;
+  }
+}

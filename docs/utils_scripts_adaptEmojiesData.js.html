@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: utils/scripts/adaptEmojiesData.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: utils/scripts/adaptEmojiesData.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const emojies = require("../../data/_allEmojies.data");
+const fs = require("fs");
+const { toTitleCase } = require("../text.utils");
+
+/**
+ * 
+ */
+const AdaptEmojiesData = () => {
+  const icons = {
+    smileys_and_emotion: "😃",
+    animals_and_nature: "🐻",
+    food_and_drink: "🍔",
+    travel_and_places: "🌇",
+    activities: "⚽",
+    objects: "💡",
+    symbols: "❤️",
+    flags: "🎌",
+  };
+
+  let newMap = {};
+  emojies.forEach((emoji) => {
+    // Ignore components
+    if (emoji.category.indexOf("Component") === -1) {
+      let verboseCategory = emoji.category.split(" (")[0];
+      let trueCategory = verboseCategory
+        .replace("&amp;", "and")
+        .split(" ")
+        .join("_")
+        .toLocaleLowerCase();
+      let verboseName = toTitleCase(emoji.name);
+      let trueName = emoji.name
+        .split(" ")
+        .join("_")
+        .split("-")
+        .join("_")
+        .split("“")
+        .join("")
+        .split("”")
+        .join("");
+      let updatedEmoji = {
+        codes: emoji.codes,
+        char: emoji.char,
+        name: emoji.name,
+      };
+      if (trueCategory.indexOf("people_and_body") !== -1) {
+        trueCategory = "smileys_and_emotion"; // Merge with Smileys &amp; Emotion
+      }
+      if (newMap[trueCategory] === undefined) {
+        if (trueCategory.indexOf("People") === -1) {
+          newMap[trueCategory] = {};
+          newMap[trueCategory].name = verboseCategory;
+          newMap[trueCategory].list = {};
+        }
+      }
+      // console.log(trueCategory);
+      if (
+        emoji.name.indexOf(":") === -1 ||
+        trueCategory.indexOf("flags") !== -1
+      ) {
+        if (
+          emoji.char.indexOf("☺") === -1 &amp;&amp;
+          emoji.char.indexOf("☹") === -1 &amp;&amp;
+          emoji.char.indexOf("🏵") === -1 &amp;&amp;
+          emoji.char.indexOf("🕊") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍⚕") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍🎓") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍🏫") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍⚖") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍🌾") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍🍳") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍🔧") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍🏭") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍💼") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍🔬") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍💻") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍🎤") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍🎨") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍✈") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍🚀") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍🚒") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍🦯") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍🦼") === -1 &amp;&amp;
+          emoji.char.indexOf("🧑‍🦽") === -1
+        ) {
+          if (trueCategory.indexOf("flags") !== -1) {
+            trueName = trueName.replace(":_", "_");
+          }
+          updatedEmoji.shortcut = `:${trueName}:`;
+          updatedEmoji.name = verboseName;
+          newMap[trueCategory].list[trueName] = updatedEmoji;
+        }
+      } else {
+        trueName = trueName.split(":")[0];
+        if (newMap[trueCategory].list[trueName] !== undefined) {
+          // updatedEmoji = { ...newMap[trueCategory].list[trueName] };
+          // if (updatedEmoji.colored === undefined) {
+          //   updatedEmoji.colored = {};
+          // }
+          // updatedEmoji.colored[emoji.name.split(" ").join("_").split(":_")[1]] = {
+          //   ...updatedEmoji,
+          //   colored: undefined,
+          // };
+          // updatedEmoji.shortcut = `:${trueName}:`;
+          // updatedEmoji.name = verboseName;
+          // newMap[trueCategory].list[trueName] = updatedEmoji;
+        } else {
+          if (updatedEmoji.char.length === 1) {
+            updatedEmoji.shortcut = `:${trueName}:`;
+            updatedEmoji.name = verboseName;
+            newMap[trueCategory].list[trueName] = updatedEmoji;
+          }
+        }
+      }
+    }
+  });
+  fs.writeFileSync(
+    "data/defaultEmojies.data.json",
+    JSON.stringify(newMap, null, "\t")
+  );
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdaptEmojiesData">AdaptEmojiesData</a></li><li><a href="global.html#handlePropsFct">handlePropsFct</a></li><li><a href="global.html#tabs">tabs</a></li><li><a href="global.html#toTitleCase">toTitleCase</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Jun 27 2020 16:19:43 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

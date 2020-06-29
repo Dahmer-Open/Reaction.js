@@ -1,0 +1,31 @@
+.selector-container {
+  width: 360px;
+  height: 425px;
+  border-radius: 6px;
+  box-shadow: $shadow;
+  border: 1px solid $light;
+
+  .section-title {
+    color: $text-muted;
+    text-transform: uppercase;
+    font-size: $sm;
+  }
+  .reaction-settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: $sm;
+    .emoji {
+      padding: $sm;
+      text-align: center;
+      border-radius: $xs;
+      color: $text-muted;
+      transition: $transition;
+      height: 20px;
+      cursor: pointer;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Montserrat", sans-serif;
+  color: $text-color;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $primary;
+    text-transform: uppercase;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $secondary;
+  }
+
+  button {
+    background-color: inherit;
+    border: 0;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .text-muted {
+    color: $text-muted;
+  }
+
+  .demo-app-banner {
+    margin: auto;
+    height: 160px;
+    width: 100vw;
+    max-width: 1440px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url("/banner.png");
+    border: 6px solid black;
+    border-top: 0;
+  }
+
+  .demo-app-container {
+    .demo-app-content {
+      padding-top: $lg;
+      max-width: 900px;
+      margin: auto;
+    }
+  }
+}

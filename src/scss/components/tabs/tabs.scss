@@ -1,0 +1,49 @@
+.reaction-tabs {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 $sm;
+  margin: auto;
+  .reaction-tab {
+    padding: $xs;
+    transition: $transition;
+    font-size: $md;
+    color: $text-muted;
+    cursor: pointer;
+    text-align: center;
+    border-bottom: 4px solid transparent;
+    &:hover {
+      color: black;
+    }
+    &.active {
+      border-bottom: 4px solid $primary;
+      color: black;
+    }
+  }
+}
+
+.reaction-emojies-container-category {
+  font-size: $sm;
+  text-align: center;
+  width: 100%;
+}
+.reaction-emoji-info {
+  padding: $xs $sm $sm $sm;
+  display: flex;
+  justify-content: flex-start;
+  vertical-align: middle;
+  .emoji {
+    font-size: calc(60px - (2 * #{$sm})) !important;
+    text-align: center;
+    width: 50px;
+    margin-right: $sm;
+  }
+  .reaction-emoji-info-name {
+    margin-top: $xs;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .reaction-emoji-info-shortcut {
+    font-size: $sm;
+  }
+}

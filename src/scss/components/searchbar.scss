@@ -1,0 +1,27 @@
+.reaction-searchbar {
+  cursor: default;
+  transition: $transition;
+  padding: 0 $sm;
+
+  &:hover {
+    background-color: $light;
+  }
+
+  input[type="text"] {
+    border: 0;
+    font-size: $md;
+    padding: $sm $xs;
+    background-color: transparent;
+    width: calc(100% - 45px);
+    &:focus {
+      outline: none;
+    }
+  }
+  &:focus-within {
+    box-shadow: $shadow;
+  }
+  .reaction-clear-btn {
+    cursor: pointer;
+    height: 100%;
+  }
+}

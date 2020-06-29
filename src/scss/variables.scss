@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+$text-color: #333;
+$text-muted: rgba(#333, 0.5);
+$light: rgba(0, 0, 0, 0.05);
+
+$primary: #ffc83d;
+$secondary: #00bbf2;
+
+$skin-tone-default: #ffc31c;
+$skin-tone-pale: #fadfbe;
+$skin-tone-light: #e2bd96;
+$skin-tone-medium: #bb8e69;
+$skin-tone-medium: #a76d43;
+$skin-tone-medium: #72554c;
+
+$xs: 6px;
+$sm: 12px;
+$md: 16px;
+$lg: 32px;
+$xl: 64px;
+
+$xs-screen: 320px;
+$sm-screen: 480px;
+$md-screen: 720px;
+$lg-screen: 1080px;
+$xl-screen: 1440px;
+
+$transition: 0.08s ease-in-out;
+
+$shadow: 0 4px 12px 0 $light;
