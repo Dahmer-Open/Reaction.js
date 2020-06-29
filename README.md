@@ -1,6 +1,8 @@
 # Reaction
 Reaction aims to simplify emoji usage in react applications. It includes an emoji selector and (*if there's interest in the project*) reactions tags and a plug-and-play emoji suggestion box for text inputs.
 
+![Selector Preview](./Selector_Preview.PNG)
+
 ## Getting Started
 
 1. Run `git clone https://github.com/Dahmer-Open/Reaction.js.git`;
