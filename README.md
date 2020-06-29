@@ -1,7 +1,21 @@
-# Reaction
-Reaction aims to simplify emoji usage in react applications. It includes an emoji selector and (*if there's interest in the project*) reactions tags and a plug-and-play emoji suggestion box for text inputs.
+# Reaction.js
 
-![Selector Preview](./Selector_Preview.PNG)
+> If you're looking for a React Emoji Selector, there's [Emoji Mart](https://github.com/missive/emoji-mart)
+> that provides a well documented and
+> maintained Slack-like Emoji selector implementing most of the Selector features
+> planned here.
+
+**Reaction.js aims to provide developpers with a complete package to easily add emojies and reactions to their applications.**
+
+<div style="text-align: center"><img src="./Selector_Preview.PNG"/></div>
+
+Users love to react to everything, but  often, the added value of those features is fairly small. Therefore, more often than not, they're delayed or ignored. We aim to change that by providing customizable, lightweight components to easily implement all sorts of reactions to React applications.
+
+Here what's planned so far:
+
+- An Emoji Selector;
+- A Reaction Indicator/Selector;
+- Emoji Suggestions.
 
 ## Getting Started
 
